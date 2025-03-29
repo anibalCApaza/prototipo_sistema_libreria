@@ -3,4 +3,28 @@ RewriteEngine On
 # Redirigir todas las peticiones a index.php, excepto si el archivo o directorio existe
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+RewriteRule ^(.*)$ public/index.php?url=$1 [QSA,L]
+
+# Protege el archivo .htaccess
+<Files .htaccess>
+    Order Allow,Deny
+    Deny from all
+</Files>
+
+# Protege archivos PHP de configuraciones sensibles
+<FilesMatch "\.(env|config\.php|php\.ini|log)$">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Evitar listado de directorios
+Options -Indexes
+
+# Evitar que los archivos de configuración o de control de versiones sean accesibles
+<FilesMatch "\.(git|svn)">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
+# Protección contra inyecciones de URL
+Header set X-Content-Type-Options "nosniff"

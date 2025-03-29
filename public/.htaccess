@@ -1,8 +1,17 @@
 RewriteEngine On
 
-# Permitir acceso a archivos CSS, JS e imágenes
+# Permitir acceso a archivos CSS, JS, imágenes y otros archivos estáticos
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^(.*)$ - [L]
+
+# Redirigir todas las demás peticiones a index.php
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-
-# Redirigir todo a index.php
 RewriteRule ^(.*)$ index.php?url=$1 [QSA,L]
+
+# Proteger archivos sensibles
+<FilesMatch "(^\.|config\.php|\.env)">
+    Order Allow,Deny
+    Deny from all
+</FilesMatch>
+
