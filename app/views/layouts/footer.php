@@ -9,7 +9,7 @@
         Prototipo de Sistema de Gestión para Librería
         <br>
         Desarrollado por:
-        <a href="https://github.com/anibalCApaza">arcadev</a>
+        <a class="link-warning" href="https://github.com/anibalCApaza">arcadev</a>
     </div>
 </footer>
 
