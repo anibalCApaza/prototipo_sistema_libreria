@@ -6,12 +6,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <link rel="stylesheet" href="../css/bootstrap.min.css">
+
+    <style>
+        @media (max-width:767px) {
+            #sidebar {
+                display: none;
+            }
+
+            #nav-desktop {
+                display: none;
+            }
+        }
+    </style>
 </head>
 
 <body>
 
     <header>
-        <nav class="nav d-flex justify-content-end bg-primary">
+        <nav id="nav-desktop" class="nav d-md-flex justify-content-end bg-primary">
             <a class="nav-link" href="#">
                 <button class="btn btn-info fw-bolder">
                     Usuario:
@@ -28,13 +40,22 @@
                 </button>
             </a>
         </nav>
+
+        <nav id="nav-mobile" class="nav d-md-none justify-content-end bg-primary">
+            <a class="nav-link" href="#">
+                <button class="btn btn-info fw-bolder">
+                    ☰ Menú
+                </button>
+            </a>
+        </nav>
+
     </header>
 
     <div class="container-fluid">
 
         <div class="row">
             <!-- Sidebar -->
-            <nav class="col-md-3 col-lg-2 d-md-block bg-dark text-white min-vh-100 p-3">
+            <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block bg-dark text-white min-vh-100 p-3">
                 <h2 class="h4 text-primary">MENÚ</h2>
                 <ul class="nav flex-column">
                     <li class="nav-item">
@@ -52,4 +73,4 @@
                 </ul>
             </nav>
 
-            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+            <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4 min-vh-100">

@@ -4,7 +4,7 @@
 
 </div>
 
-<footer>
+<footer class="bg-primary">
     <div class="text-center bg-primary fw-bolder">
         Prototipo de Sistema de Gestión para Librería
         <br>
