@@ -1,0 +1,16 @@
+{
+    "name": "arcadev/sistema_libreria",
+    "description": "Un pequeño prototipo para sistema de librerías",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "System\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "arcadev"
+        }
+    ],
+    "require": {}
+}

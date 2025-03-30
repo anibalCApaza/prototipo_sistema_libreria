@@ -1,5 +1,7 @@
 <?php
 
+namespace System\App\Interfaces;
+
 interface ControllerInterface
 {
     public function index();

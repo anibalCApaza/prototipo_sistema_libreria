@@ -1,5 +1,11 @@
 <?php
 
+declare(strict_types=1);
+require_once '../vendor/autoload.php';
+require_once '../src/config/constants.php';
+
+
+
 $url = isset($_GET['url']) ? $_GET['url'] : 'home';
 
 
@@ -7,17 +13,15 @@ $urlParts = explode('/', rtrim($url, '/'));
 
 $controllerName = ucfirst(array_shift($urlParts)) . 'Controller';
 
-$controllerFile = '../app/controllers/' . $controllerName . '.php';
-
+$controllerClass = 'System\\App\Controllers\\' . $controllerName;
 
 $actionName = array_shift($urlParts) ?: 'index';
 
 
-if (file_exists($controllerFile)) {
-    require_once $controllerFile;
+if (class_exists($controllerClass)) {
 
-    $controller = new $controllerName();
-    if (method_exists($controllerName, $actionName)) {
+    $controller = new $controllerClass();
+    if (method_exists($controllerClass, $actionName)) {
         $controller->$actionName();
     } else {
         echo 'este metodo no existe';
