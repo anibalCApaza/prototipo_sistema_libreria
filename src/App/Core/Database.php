@@ -11,7 +11,7 @@ class Database
 
     public function connect()
     {
-        $config = require '../src/config/Database.php';
+        $config = require '../src/config/database.php';
 
         try {
             $dsn = "mysql:host=" . $config['db_host'] . ";dbname=" . $config['db_name'] . ";charset=" . $config['db_charset'];

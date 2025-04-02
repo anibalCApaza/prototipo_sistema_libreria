@@ -1,8 +1,5 @@
 <?php
 
-namespace System\Config;
-
-
 return [
     'db_host' => 'localhost',
     'db_name' => 'prototipo_sistema_libreria',
