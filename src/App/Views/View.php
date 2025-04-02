@@ -2,10 +2,21 @@
 
 namespace System\App\Views;
 
+
 class View
 {
-    public static function render(string $viewName, array $data = [])
+    private $twig;
+
+    public function __construct()
     {
-        require_once VIEWS_DIR . $viewName . '.php';
+        $loader = new \Twig\Loader\FilesystemLoader('../src/App/Views/');
+        $this->twig = new \Twig\Environment($loader, [
+            'cache' => false, #DESACTIVAR EN PRODUCCIÓN
+        ]);
+    }
+
+    public function render($template, $data = [])
+    {
+        return $this->twig->render($template, $data);
     }
 }

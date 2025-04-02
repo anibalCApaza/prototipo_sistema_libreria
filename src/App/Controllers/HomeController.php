@@ -10,7 +10,8 @@ class HomeController
 
     public function index()
     {
-        View::render('home/index');
+        $view = new View();
+        echo $view->render();
     }
 
     public function login()
