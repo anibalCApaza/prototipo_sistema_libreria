@@ -12,5 +12,7 @@
             "name": "arcadev"
         }
     ],
-    "require": {}
+    "require": {
+        "twig/twig": "^3.0"
+    }
 }

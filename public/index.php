@@ -5,6 +5,12 @@ require_once '../vendor/autoload.php';
 require_once '../src/config/constants.php';
 
 
+session_start();
+
+if (!isset($_SESSION['isAuth'])) {
+    $_SESSION['isAuth'] = 0;
+}
+
 
 $url = isset($_GET['url']) ? $_GET['url'] : 'home';
 
