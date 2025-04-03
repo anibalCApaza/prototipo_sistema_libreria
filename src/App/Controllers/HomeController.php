@@ -5,13 +5,11 @@ namespace System\App\Controllers;
 use System\App\Models\User;
 use System\App\Views\View;
 
-class HomeController
+class HomeController extends Controller
 {
-
     public function index()
     {
-        $view = new View();
-        echo $view->render();
+        echo $this->view->render('home/index');
     }
 
     public function login()
@@ -40,7 +38,7 @@ class HomeController
 
     public function showLoginForm()
     {
-        View::render('home/loginForm');
+        echo $this->view->render('home/loginForm');
     }
 
     public static function checkAuth()
