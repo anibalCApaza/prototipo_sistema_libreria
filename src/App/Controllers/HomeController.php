@@ -14,16 +14,29 @@ class HomeController extends Controller
 
     public function login()
     {
-        if (isset($_POST['user'], $_POST['password'])) {
-
+        if (isset($_POST['name'], $_POST['password'])) {
             $user = new User();
-            var_dump($user->getAll());
-            $password = password_hash('13734487', PASSWORD_BCRYPT);
-            var_dump($password);
-            echo "<br> OWO";
-            var_dump(password_verify('13734487', $password));
+            $result = $user->getByName($_POST['name']);
+
+            if (count($result) == 1) {
+                $userData = $result[0];
+
+                if (password_verify($_POST['password'], $userData['password'])) {
+                    $_SESSION['name'] = $userData['name'];
+                    $_SESSION['password'] = $userData['password'];
+
+                    var_dump($_SESSION);
+                } else {
+                    header("Location: showLoginForm");
+                    exit();
+                }
+            } else {
+                header("Location: showLoginForm");
+                exit();
+            }
         } else {
-            echo 'no existen';
+            header("Location: showLoginForm");
+            exit();
         }
     }
 

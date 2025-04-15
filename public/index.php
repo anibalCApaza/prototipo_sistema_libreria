@@ -33,5 +33,5 @@ if (class_exists($controllerClass)) {
         echo 'este metodo no existe';
     }
 } else {
-    echo 'no existo';
+    echo 'Este enlace no existe';
 }

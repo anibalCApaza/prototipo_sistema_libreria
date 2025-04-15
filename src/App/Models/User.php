@@ -17,12 +17,19 @@ class User
         $this->pdo = $db->getPDO();
     }
 
+    public function getByName(string $name)
+    {
+        $sql = "SELECT name, password FROM users WHERE name = '$name'";
+        $stmt = $this->pdo->query($sql);
+        return $stmt->fetchAll();
+    }
+
     public function getAll()
     {
         $sql = "SELECT * FROM users";
         $stmt = $this->pdo->prepare($sql);
         $stmt->execute();
 
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll();
     }
 }
